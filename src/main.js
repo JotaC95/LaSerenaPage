@@ -5,9 +5,7 @@ const closeModal = document.getElementById('closeModal');
 const saveContactButton = document.getElementById('saveContact');
 
 // Abrir modal al hacer clic en el botón flotante
-floatingButton.addEventListener('click', () => {
-    contactModal.style.display = 'flex';
-});
+
 
 // Cerrar modal al hacer clic en la "X"
 closeModal.addEventListener('click', () => {
