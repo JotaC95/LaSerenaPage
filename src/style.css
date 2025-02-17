@@ -38,7 +38,7 @@ nav ul li a {
 }
 
 .hero {
-  background-image: url('/laSerenaLandpage/src/LogoMarcoPaloRosa.png');
+  background-image: url('/src/LogoMarcoPaloRosa.png');
   background-size: cover;
   background-position: center;
   color: #fff;
