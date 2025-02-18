@@ -44,7 +44,9 @@ nav ul li a {
   color: #fff;
   text-align: center;
   padding: 100px 20px;
+  height: 100vh;
   position: relative;
+  z-index: 0;
 }
 
 .hero::before {
@@ -55,13 +57,16 @@ nav ul li a {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: -1;
+}
+
+hero-content {
+  position : relative;
 }
 
 .hero h2 {
   font-size: 3em;
   margin: 0;
-  z-index: 2;
 }
 
 .hero p {
