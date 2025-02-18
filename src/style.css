@@ -9,8 +9,9 @@ body {
 
 header {
   background-color: rgb(192, 89, 92);
-  padding: 20px;
+  padding: 70px;
   text-align: center;
+  align-items: center;
 }
 
 header h1 {
@@ -18,17 +19,21 @@ header h1 {
   margin: 0;
   padding: 30px;
 }
+nav {
+  width: 50%;
+  margin: 20px auto;
+}
 
 nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: center;
+  justify-content:space-between;
 }
 
 nav ul li {
-  margin: 0 15px;
+  margin: 0 20px;
 }
 
 nav ul li a {
@@ -105,6 +110,10 @@ hero-content {
 
 .contact-info {
   margin-bottom: 20px;
+}
+.contact-info a {
+  text-decoration: none;
+  color: #333;
 }
 
 .contact-form input, .contact-form textarea {
