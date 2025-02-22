@@ -9,103 +9,106 @@
 </head>
 <body>
     <!-- Header con logo y menú -->
-    <header>
-        <div class="logo">
-            <h1 class="title">La</h1> 
-            <h1><img class="imgLogo" src="/src/LogoLetraCirculoPaloRosa.png" alt="Logo de la pastelería">erena</h1>
-        </div>
-        <nav class="nav">
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <!--<li><a href="#productos">Productos</a></li> -->
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <!-- Sección de Inicio -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h2>Bienvenidos a La Serena!</h2>
-            <p>Donde los sabores se encuentran con la tradición.</p>
-            <a href="#contacto" class="btn">Contáctanos</a>
-        </div>
-    </section>
-
-    <!-- Sección Nosotros -->
-    <section id="nosotros" class="about">
-        <h2>Sobre Nosotros</h2>
-        <p>
-            En <strong>La Serena</strong>, nos dedicamos a crear los mejores pasteles y postres con ingredientes frescos y de alta calidad. 
-            Nuestra tradición familiar nos respalda, y cada bocado es una experiencia única.
-        </p>
-    </section>
-
-    <!-- Sección Productos -->
-    <!--<section id="productos" class="products"> 
-        <h2>Nuestros Productos</h2>
-        <div class="product-grid">
-            <div class="product-item">
-                <img src="https://via.placeholder.com/200" alt="Pastel de Chocolate" />
-                <h3>Pastel de Chocolate</h3>
-                <p>Delicioso pastel con un toque de cacao premium.</p>
+    <div class="all">
+        <header>
+            <div class="logo"> 
+                <h1>La</h1><img class="imgLogo" src="/src/LogoLetraCirculoPaloRosa.png" alt="Logo de la pastelería"><h1>erena</h1>
             </div>
-            <div class="product-item">
-                <img src="https://via.placeholder.com/200" alt="Cupcakes" />
-                <h3>Cupcakes</h3>
-                <p>Pequeñas delicias para endulzar tu día.</p>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <!--<li><a href="#productos">Productos</a></li> -->
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+            
+        <!-- Sección de Inicio -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h2>Bienvenidos a La Serena!</h2>
+                <p>Donde los sabores se encuentran con la tradición.</p>
+                <a href="#contacto" class="btn">Contáctanos</a>
             </div>
-            <div class="product-item">
-                <img src="https://via.placeholder.com/200" alt="Galletas Artesanales" />
-                <h3>Galletas Artesanales</h3>
-                <p>Hechas con amor y los mejores ingredientes.</p>
+        </section>
+        
+        <!-- Sección Nosotros -->
+        <section id="nosotros" class="about">
+            <h2>Sobre Nosotros</h2>
+            <p>
+                En <strong>La Serena</strong>, nos dedicamos a crear los mejores pasteles y postres con ingredientes frescos y de alta calidad. 
+                Nuestra tradición familiar nos respalda, y cada bocado es una experiencia única.
+            </p>
+        </section>
+        
+        <!-- Sección Productos -->
+        <!--<section id="productos" class="products"> 
+            <h2>Nuestros Productos</h2>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="https://via.placeholder.com/200" alt="Pastel de Chocolate" />
+                        <h3>Pastel de Chocolate</h3>
+                        <p>Delicioso pastel con un toque de cacao premium.</p>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://via.placeholder.com/200" alt="Cupcakes" />
+                        <h3>Cupcakes</h3>
+                        <p>Pequeñas delicias para endulzar tu día.</p>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://via.placeholder.com/200" alt="Galletas Artesanales" />
+                        <h3>Galletas Artesanales</h3>
+                        <p>Hechas con amor y los mejores ingredientes.</p>
+                    </div>
+                </div>
+            </section>  -->
+        
+            <!-- Sección Contacto --> 
+            <section id="contacto" class="contact">
+                <h2>Contacto</h2>
+                <p>¡Estamos aquí para endulzar tu vida! Contáctanos para pedidos especiales o consultas.</p>
+                <div class="contact-info">
+                    <p><strong>Teléfono:</strong> <a href="tel:+593992478574">+593992478574</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:jota.crow@gmail.com">info@laserena.com</a></p>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Nombre" required />
+                    <input type="email" placeholder="Email" required />
+                    <textarea placeholder="Mensaje" required></textarea>
+                    <button type="submit">Enviar Mensaje</button>
+                </form>
+            </section> 
+        
+            <!-- Footer -->
+            <div class="floating-button" id="floatingButton">
+                <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.instagram.com/la_serena_pasteleria/%3Fhl%3Des&ved=2ahUKEwjpt8Xf58eLAxVkTDABHQFGAVgQFnoECBcQAQ&usg=AOvVaw2GGxzOnSHLc2_1xFl6p8sq" target="_blank" class="instagram-button">
+                <i class="fa-brands fa-instagram" style="color: #ffffff;"></i>
+                </a>
             </div>
+            <!-- Botón flotante -->
+            
+            <div class="floating-button-whatsapp" id="floatingButtonWhats">
+                <a href="https://wa.me/593992478574?text=Hola,%20me%20interesa%20contactarlos" target="_blank" class="instagram-button">
+                    <i class="fa-brands fa-whatsapp" style="color: #ffffff;"></i>
+                </a>
+            </div>
+            
+            <div class="modal" id="contactModal">
+                <div class="modal-content">
+                    <span class="close" id="closeModal">&times;</span>
+                    <h2>Contacto</h2>
+                    <p><strong>Teléfono:</strong> <a href="tel:+593992478574">+593 9 9247 8574</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:jota.crow@gmail.com">info@laserena.com</a></p>
+                    <button id="saveContact">Guardar Contacto</button>
+                </div>
+            </div>
+        
+            <footer>
+                <p>&copy; 2023 Pastelería La Serena. Todos los derechos reservados.</p>
+            </footer>
         </div>
-    </section>  -->
-
-    <!-- Sección Contacto - 
-    <section id="contacto" class="contact">\]=ß        <h2>Contacto</h2>
-        <p>¡Estamos aquí para endulzar tu vida! Contáctanos para pedidos especiales o consultas.</p>
-        <div class="contact-info">
-            <p><strong>Teléfono:</strong> <a href="tel:+593992478574">+593992478574</a></p>
-            <p><strong>Email:</strong> <a href="mailto:info@laserena.com">info@laserena.com</a></p>
-        </div>
-        <form class="contact-form">
-            <input type="text" placeholder="Nombre" required />
-            <input type="email" placeholder="Email" required />
-            <textarea placeholder="Mensaje" required></textarea>
-            <button type="submit">Enviar Mensaje</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <div class="floating-button" id="floatingButton">
-        <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.instagram.com/la_serena_pasteleria/%3Fhl%3Des&ved=2ahUKEwjpt8Xf58eLAxVkTDABHQFGAVgQFnoECBcQAQ&usg=AOvVaw2GGxzOnSHLc2_1xFl6p8sq" target="_blank" class="instagram-button">
-        <i class="fa-brands fa-instagram" style="color: #ffffff;"></i>
-        </a>
-    </div>
-    <!-- Botón flotante -->
-    
-    <div class="floating-button-whatsapp" id="floatingButtonWhats">
-        <a href="https://wa.me/593992478574?text=Hola,%20me%20interesa%20contactarlos" target="_blank" class="instagram-button">
-            <i class="fa-brands fa-whatsapp" style="color: #ffffff;"></i>
-        </a>
-    </div>
-    
-    <footer>
-        <p>&copy; 2023 Pastelería La Serena. Todos los derechos reservados.</p>
-    </footer>
-    <!-- Modal de contacto -->
-    <div class="modal" id="contactModal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <h2>Contacto</h2>
-            <p><strong>Teléfono:</strong> <a href="tel:+593992478574">+593 9 9247 8574</a></p>
-            <p><strong>Email:</strong> <a href="mailto:info@laserena.com">info@laserena.com</a></p>
-            <button id="saveContact">Guardar Contacto</button>
-        </div>
-    </div>
+        
 
     <!-- JavaScript -->
     <script src="/src/main.js"></script>

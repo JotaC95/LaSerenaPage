@@ -6,27 +6,35 @@ body {
   background-color: #f9f9f9;
   color: #333;
 }
+all{
+  width: 80%;
+  display: flex;
+  align-items: center;
+
+}
 
 header {
   display: flex;
   flex-direction: column;
   background-color: rgb(192, 89, 92);
-  padding: 70px;
   text-align: center;
   align-items: center;
+  width: 100%;
 }
 
 header img {
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
 }
 
 header h1 {
   color: #fff;
-  margin: 0;
-  padding: 30px;
   display: flex;
   align-items: center;
+  font-size: 60px;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;;
 }
 
 header .logo {
@@ -34,13 +42,13 @@ header .logo {
   align-items: center;
 }
 
+header .logo img {
+  padding-left: 20px;
+}
+
 nav {
   width: 50%;
   margin: 20px auto;
-}
-
-.tittle{
-  padding-right: 0px;
 }
 
 nav ul {
@@ -275,6 +283,7 @@ footer {
 /* Responsive  */
 
 @media (max-width: 868px) {
+  header
   .nav ul{
     display: flex;
     flex-direction: column;
@@ -285,5 +294,12 @@ footer {
     margin: 10px 0;
   }
 
+  nav ul li a {
+    font-size: 1.2em;
+  }
+  
+  .hero{
+    background-size: 150%;
+  }
   
 }  
