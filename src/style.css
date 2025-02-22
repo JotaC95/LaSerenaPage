@@ -52,6 +52,11 @@ nav ul li a {
   height: 100vh;
   position: relative;
   z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-attachment: fixed;
+  overflow-y: auto;
 }
 
 .hero::before {
@@ -244,3 +249,18 @@ footer {
 }
 
 
+/* Responsive  */
+
+@media (max-width: 868px) {
+  .nav ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  
+}  
