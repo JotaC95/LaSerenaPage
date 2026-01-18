@@ -1,22 +1,41 @@
+:root {
+  --primary-color: #c0595c;
+  /* Palo Rosa */
+  --secondary-color: #ba5154;
+  /* Palo Rosa Darker */
+  --text-color: #333;
+  --bg-color: #f9f9f9;
+  --white: #ffffff;
+  --font-main: 'Arial', sans-serif;
+  --font-display: 'Poppins', serif;
+}
+
 /* Estilos generales */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: var(--font-main);
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
-all{
-  width: 80%;
-  display: flex;
-  align-items: center;
 
+.all {
+  width: 100%;
+  /* Changed from 80% to 100% to let children control max-width if needed, or stick to 80% wrapper logic effectively */
+  max-width: 1200px;
+  /* Standard container constraint */
+  margin: 0 auto;
+  /* Center the container */
+  display: flex;
+  flex-direction: column;
+  /* Likely meant column layout for the main wrapper */
+  align-items: center;
 }
 
 header {
   display: flex;
   flex-direction: column;
-  background-color: rgb(192, 89, 92);
+  background-color: var(--primary-color);
   text-align: center;
   align-items: center;
   width: 100%;
@@ -28,13 +47,13 @@ header img {
 }
 
 header h1 {
-  color: #fff;
+  color: var(--white);
   display: flex;
   align-items: center;
   font-size: 60px;
-  font-family: "Poppins", serif;
+  font-family: var(--font-display);
   font-weight: 400;
-  font-style: normal;;
+  font-style: normal;
 }
 
 header .logo {
@@ -47,7 +66,9 @@ header .logo img {
 }
 
 nav {
-  width: 50%;
+  width: 80%;
+  /* Increased for better spacing */
+  max-width: 600px;
   margin: 20px auto;
 }
 
@@ -56,38 +77,40 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 
 nav ul li {
-  margin: 0 20px;
+  margin: 0 10px;
 }
 
 nav ul li a {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   font-weight: bold;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: black;
+  color: #000;
 }
 
-.hero{
+.hero {
   background-image: url('/src/LogoMarcoPaloRosa.png');
   background-size: cover;
   background-position: center;
-  color: #fff;
+  color: var(--white);
   text-align: center;
   padding: 100px 20px;
-  height: 100vh;
+  min-height: 80vh;
+  /* Changed from fixed height */
   position: relative;
   z-index: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background-attachment: fixed;
-  overflow-y: auto;
 }
 
 .hero::before {
@@ -101,13 +124,15 @@ nav ul li a:hover {
   z-index: -1;
 }
 
-hero-content {
-  position : relative;
+.hero-content {
+  position: relative;
+  max-width: 800px;
 }
 
 .hero h2 {
   font-size: 3em;
   margin: 0;
+  font-family: var(--font-display);
 }
 
 .hero p {
@@ -116,104 +141,142 @@ hero-content {
 }
 
 .btn {
-  background-color: rgb(186, 81, 84);
-  color: #fff;
-  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 12px 24px;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-block;
 }
 
-.about, .products, .contact {
-  padding: 50px 20px;
+.btn:hover {
+  background-color: #a04043;
+  transform: scale(1.05);
+}
+
+.about,
+.products,
+.contact {
+  padding: 80px 20px;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .products .product-grid {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
 .product-item {
-  width: 30%;
+  width: 300px;
+  /* Fixed width for consistency */
   margin-bottom: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
 }
 
 .product-item img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
   border-radius: 10px;
 }
 
 .contact-info {
-  margin-bottom: 20px;
-}
-.contact-info a {
-  text-decoration: none;
-  color: #333;
+  margin-bottom: 30px;
 }
 
-.contact-form input, .contact-form textarea {
+.contact-info a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: inherit;
 }
 
 .contact-form button {
-  background-color: rgb(186, 81, 84);
-  color: #fff;
-  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 12px 30px;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #a04043;
 }
 
 footer {
   background-color: #333;
-  color: #fff;
+  color: var(--white);
   text-align: center;
-  padding: 20px;
+  padding: 30px 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Botón flotante */
-.floating-button {
-  position: fixed;
-  bottom: 70px;
-  right: 20px;
-  background-color: rgb(186, 81, 84);
-  color: #fff;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(248, 247, 247, 0.2);
-  z-index: 1000;
-}
+/* Floating Buttons */
+.floating-button,
 .floating-button-whatsapp {
   position: fixed;
-  bottom: 20px;
-  right: 50px;
-  background-color: rgb(186, 81, 84);
-  color: #fff;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-color);
+  color: var(--white);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(248, 247, 247, 0.2);
+  font-size: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  transition: transform 0.3s;
 }
 
-.floating-button:hover {
-  background-color: rgb(186, 81, 84);
+.floating-button {
+  bottom: 90px;
+  right: 20px;
+}
+
+.floating-button-whatsapp {
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  /* Official Whatsapp Color */
+}
+
+.floating-button:hover,
+.floating-button-whatsapp:hover {
+  transform: scale(1.1);
 }
 
 /* Modal de contacto */
@@ -228,78 +291,148 @@ footer {
   justify-content: center;
   align-items: center;
   z-index: 1001;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
 }
 
 .modal-content {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 30px;
+  border-radius: 20px;
   text-align: center;
-  max-width: 300px;
-  width: 100%;
+  max-width: 350px;
+  width: 90%;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  right: 15px;
   font-size: 24px;
   cursor: pointer;
+  color: #666;
 }
 
 .modal-content h2 {
   margin-top: 0;
-}
-
-.modal-content p {
-  margin: 10px 0;
+  color: var(--primary-color);
 }
 
 .modal-content a {
-  color: rgb(186, 81, 84);
-  text-decoration: none;
+  color: var(--primary-color);
 }
 
 .modal-content button {
-  background-color: rgb(186, 81, 84);
+  background-color: var(--primary-color);
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
-.modal-content button:hover {
-  background-color: rgb(186, 81, 84);
+/* Mobile Navigation */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1002;
 }
 
-.instagram-button:hover {
-  background-color: rgb(186, 81, 84);
-}
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
 
-
-/* Responsive  */
-
-@media (max-width: 868px) {
-  header
-  .nav ul{
-    display: flex;
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Hidden off-screen */
+    width: 70%;
+    height: 100vh;
+    background-color: var(--primary-color);
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease;
+    z-index: 1001;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    padding-top: 60px;
+    /* Space for close button if needed, or proper spacing */
   }
 
-  nav ul li {
-    margin: 10px 0;
+  nav.active {
+    right: 0;
   }
 
-  nav ul li a {
-    font-size: 1.2em;
+  nav ul {
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    text-align: center;
   }
-  
-  .hero{
-    background-size: 150%;
+
+  header h1 {
+    font-size: 40px;
   }
-  
-}  
+
+  header img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .hero h2 {
+    font-size: 2.2em;
+  }
+
+  .product-item {
+    width: 100%;
+  }
+}
+
+/* Animations */
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-delay-1 {
+  transition-delay: 100ms;
+}
+
+.stagger-delay-2 {
+  transition-delay: 200ms;
+}
+
+.stagger-delay-3 {
+  transition-delay: 300ms;
+}
+
+/* Hover effects for cards */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
