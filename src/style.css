@@ -17,6 +17,87 @@ body {
   padding: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
+  cursor: none;
+  /* Hide default cursor */
+}
+
+/* Custom Cursor */
+.cursor-dot {
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  box-shadow: 0 0 10px rgba(192, 89, 92, 0.4);
+}
+
+.cursor-dot.active {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+}
+
+/* Sugar Trail Particles */
+.sugar-particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background-color: #ffd700;
+  /* Gold sugar specs */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  animation: particle-fade 1s forwards;
+}
+
+@keyframes particle-fade {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--mx), var(--my)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating-anim {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Restore cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+
+  .cursor-dot,
+  .sugar-particle {
+    display: none;
+  }
 }
 
 .all {
@@ -233,33 +314,138 @@ nav ul li a:hover {
   box-sizing: border-box;
 }
 
-.products .product-grid {
+/* Social Hub Section */
+.social-hub {
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  background-color: var(--bg-color);
+}
+
+.social-grid {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
+  /* Big gap for distinct cards */
   flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.product-item {
-  width: 300px;
-  /* Fixed width for consistency */
-  margin-bottom: 20px;
-  background: white;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.product-item:hover {
-  transform: translateY(-5px);
-}
-
-.product-item img {
+.social-card {
+  position: relative;
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
+  max-width: 400px;
+  height: 300px;
+  /* Tall, premium cards */
+  text-decoration: none;
+  color: #333;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.social-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.icon-large {
+  font-size: 60px;
+  margin-bottom: 20px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-card:hover .icon-large {
+  transform: scale(1.2);
+}
+
+.social-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.8em;
+  margin: 10px 0;
+  color: var(--secondary-color);
+}
+
+.social-card p {
+  font-size: 1.1em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.action-text {
+  font-weight: bold;
+  font-size: 1em;
+  color: var(--primary-color);
+  opacity: 0.8;
+  transition: opacity 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-card:hover .action-text {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+/* Card Specifics */
+.whatsapp-card .icon-large {
+  color: #25D366;
+}
+
+.whatsapp-card:hover h3 {
+  color: #25D366;
+}
+
+.instagram-card .icon-large {
+  background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.instagram-card:hover h3 {
+  color: #E1306C;
+  /* Instagram Brand Color */
+}
+
+/* Animations */
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-delay-1 {
+  transition-delay: 100ms;
+}
+
+.stagger-delay-2 {
+  transition-delay: 200ms;
+}
+
+.stagger-delay-3 {
+  transition-delay: 300ms;
 }
 
 .contact-info {

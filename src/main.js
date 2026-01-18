@@ -5,42 +5,70 @@ const closeModal = document.getElementById('closeModal');
 const saveContactButton = document.getElementById('saveContact');
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
-const productGrid = document.getElementById('productGrid');
 
-// Datos de Productos (Fase 2: Dinámico)
-const products = [
-    {
-        title: "Pastel de Chocolate",
-        desc: "Delicioso pastel con un toque de cacao premium.",
-        img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000&auto=format&fit=crop"
-    },
-    {
-        title: "Cupcakes Temáticos",
-        desc: "Pequeñas delicias personalizadas para endulzar tu día.",
-        img: "https://images.unsplash.com/photo-1576618148400-f54bed99fcf8?q=80&w=1000&auto=format&fit=crop"
-    },
-    {
-        title: "Galletas Artesanales",
-        desc: "Hechas con amor y los mejores ingredientes naturales.",
-        img: "https://images.unsplash.com/photo-1499636138143-bd649043ea52?q=80&w=1000&auto=format&fit=crop"
-    },
-    {
-        title: "Cheesecake de Frutos Rojos",
-        desc: "Suave y cremoso con una base crujiente.",
-        img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=1000&auto=format&fit=crop"
+// Custom Glaze Cursor & Sugar Trail
+const cursor = document.querySelector('.cursor-dot');
+let mouseX = 0;
+let mouseY = 0;
+let cursorX = 0;
+let cursorY = 0;
+
+// Cursor Movement (Smooth Follow)
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    // Create Sugar Particle
+    if (Math.random() > 0.8) { // Only sometimes to avoid lag
+        createSugarParticle(e.clientX, e.clientY);
     }
-];
+});
 
-// Renderizar Productos
-if (productGrid) {
-    productGrid.innerHTML = products.map((product, index) => `
-        <div class="product-item hidden stagger-delay-${(index % 3) + 1}">
-            <img src="${product.img}" alt="${product.title}" loading="lazy" />
-            <h3>${product.title}</h3>
-            <p>${product.desc}</p>
-        </div>
-    `).join('');
+function animateCursor() {
+    // Lerp for smooth cursor
+    const dt = 0.2;
+    cursorX += (mouseX - cursorX) * dt;
+    cursorY += (mouseY - cursorY) * dt;
+
+    if (cursor) {
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+    }
+
+    requestAnimationFrame(animateCursor);
 }
+animateCursor();
+
+// Sugar Particle Creator
+function createSugarParticle(x, y) {
+    const particle = document.createElement('div');
+    particle.classList.add('sugar-particle');
+    document.body.appendChild(particle);
+
+    const size = Math.random() * 6 + 2; // Random size
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+
+    // Random direction
+    const destX = (Math.random() - 0.5) * 50;
+    const destY = Math.random() * 50; // Fall down
+
+    particle.style.setProperty('--mx', `${destX}px`);
+    particle.style.setProperty('--my', `${destY}px`);
+
+    // Remove after animation
+    setTimeout(() => {
+        particle.remove();
+    }, 1000);
+}
+
+// Hover States for Cursor
+document.querySelectorAll('a, button, .social-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+});
 
 // Scroll Animations (Intersection Observer)
 const observerOptions = {

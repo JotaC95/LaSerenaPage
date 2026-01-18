@@ -34,7 +34,7 @@
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#social-hub">Conecta</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
@@ -45,7 +45,7 @@
             <div class="hero-content hidden">
                 <h2>¡Bienvenidos a La Serena!</h2>
                 <p>Donde los sabores se encuentran con la tradición.</p>
-                <a href="#contacto" class="btn">Contáctanos</a>
+                <a href="#social-hub" class="btn">Haz tu Pedido</a>
             </div>
 
             <!-- Wave Divider Bottom -->
@@ -69,11 +69,35 @@
             </p>
         </section>
 
-        <!-- Sección Productos -->
-        <section id="productos" class="products hidden">
-            <h2>Nuestros Productos</h2>
-            <div class="product-grid" id="productGrid">
-                <!-- Products rendered via JS -->
+        <!-- Sección Social Hub (Reemplaza Productos) -->
+        <section id="social-hub" class="social-hub hidden">
+            <h2>Conecta y Disfruta</h2>
+            <p style="margin-bottom: 40px; font-size: 1.2em;">La experiencia La Serena comienza aquí.</p>
+
+            <div class="social-grid">
+                <!-- WhatsApp Card -->
+                <a href="https://wa.me/593992478574?text=Hola,%20me%20interesa%20hacer%20un%20pedido" target="_blank"
+                    class="social-card whatsapp-card floating-anim">
+                    <div class="card-content">
+                        <i class="fa-brands fa-whatsapp icon-large"></i>
+                        <h3>Haz tu Pedido</h3>
+                        <p>Atención personalizada e inmediata.</p>
+                        <span class="action-text">Chatear ahora <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="card-bg"></div>
+                </a>
+
+                <!-- Instagram Card -->
+                <a href="https://www.instagram.com/la_serena_pasteleria/" target="_blank"
+                    class="social-card instagram-card floating-anim" style="animation-delay: 2s;">
+                    <div class="card-content">
+                        <i class="fa-brands fa-instagram icon-large"></i>
+                        <h3>Nuestro Portafolio</h3>
+                        <p>Inspiración visual y nuevas creaciones.</p>
+                        <span class="action-text">Ver Galería <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="card-bg"></div>
+                </a>
             </div>
         </section>
 
@@ -130,6 +154,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
 
     <!-- JavaScript -->
     <script type="module" src="/src/main.js"></script>
