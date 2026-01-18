@@ -47,10 +47,20 @@
                 <p>Donde los sabores se encuentran con la tradición.</p>
                 <a href="#contacto" class="btn">Contáctanos</a>
             </div>
+
+            <!-- Wave Divider Bottom -->
+            <div class="wave-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
         </section>
 
         <!-- Sección Nosotros -->
-        <section id="nosotros" class="about hidden">
+        <section id="nosotros" class="about hidden" style="position: relative; padding-top: 50px;">
             <h2>Sobre Nosotros</h2>
             <p>
                 En <strong>La Serena</strong>, nos dedicamos a crear los mejores pasteles y postres con ingredientes
@@ -75,11 +85,12 @@
                 <p><strong>Teléfono:</strong> <a href="tel:+593992478574">+593 99 247 8574</a></p>
                 <p><strong>Email:</strong> <a href="mailto:jota.crow@gmail.com">info@laserena.com</a></p>
             </div>
-            <form class="contact-form">
-                <input type="text" placeholder="Nombre" required />
-                <input type="email" placeholder="Email" required />
-                <textarea placeholder="Mensaje" rows="5" required></textarea>
+            <form class="contact-form" id="contactForm">
+                <input type="text" id="nameInput" placeholder="Nombre" required />
+                <input type="email" id="emailInput" placeholder="Email" required />
+                <textarea id="messageInput" placeholder="Mensaje" rows="5" required></textarea>
                 <button type="submit">Enviar Mensaje</button>
+                <div id="formFeedback" class="form-feedback"></div>
             </form>
         </section>
 

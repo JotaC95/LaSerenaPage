@@ -35,30 +35,45 @@ body {
 header {
   display: flex;
   flex-direction: column;
-  background-color: var(--primary-color);
+  background-color: rgba(192, 89, 92, 0.85);
+  /* Semi-transparent */
+  backdrop-filter: blur(10px);
+  /* Glassmorphism effect */
+  -webkit-backdrop-filter: blur(10px);
   text-align: center;
   align-items: center;
   width: 100%;
+  position: sticky;
+  /* Sticky Header */
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: padding 0.3s ease;
 }
 
 header img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  /* Slightly smaller for sticky */
+  height: 80px;
+  transition: width 0.3s, height 0.3s;
 }
 
 header h1 {
   color: var(--white);
   display: flex;
   align-items: center;
-  font-size: 60px;
+  font-size: 50px;
+  /* Slightly smaller */
   font-family: var(--font-display);
   font-weight: 400;
   font-style: normal;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 header .logo {
   display: flex;
   align-items: center;
+  padding-top: 5px;
 }
 
 header .logo img {
@@ -69,7 +84,8 @@ nav {
   width: 80%;
   /* Increased for better spacing */
   max-width: 600px;
-  margin: 20px auto;
+  margin: 10px auto 15px;
+  /* Adjust margin */
 }
 
 nav ul {
@@ -89,11 +105,28 @@ nav ul li a {
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1em;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--white);
+  transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
 }
 
 nav ul li a:hover {
-  color: #000;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
 .hero {
@@ -102,7 +135,8 @@ nav ul li a:hover {
   background-position: center;
   color: var(--white);
   text-align: center;
-  padding: 100px 20px;
+  padding: 140px 20px 100px;
+  /* Adjust padding for sticky header */
   min-height: 80vh;
   /* Changed from fixed height */
   position: relative;
@@ -120,7 +154,8 @@ nav ul li a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, rgba(192, 89, 92, 0.9), rgba(0, 0, 0, 0.6));
+  /* Gradient Overlay */
   z-index: -1;
 }
 
@@ -130,14 +165,47 @@ nav ul li a:hover {
 }
 
 .hero h2 {
-  font-size: 3em;
+  font-size: 4em;
+  /* Larger impact */
   margin: 0;
   font-family: var(--font-display);
+  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 .hero p {
-  font-size: 1.5em;
-  margin: 10px 0 20px;
+  font-size: 1.6em;
+  margin: 15px 0 30px;
+  font-weight: 300;
+}
+
+/* SVG Shapes */
+.wave-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.wave-divider .shape-fill {
+  fill: #f9f9f9;
+  /* Match body bg */
+}
+
+.wave-top {
+  transform: rotate(0deg);
+  top: -1px;
+  /* Stitch fix */
+  bottom: auto;
 }
 
 .btn {
@@ -235,13 +303,50 @@ nav ul li a:hover {
   background-color: #a04043;
 }
 
+/* Form Feedback */
+.form-feedback {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: none;
+  /* Hidden by default */
+}
+
+.form-feedback.success {
+  display: block;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.form-feedback.error {
+  display: block;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.contact-form input.invalid,
+.contact-form textarea.invalid {
+  border-color: #dc3545;
+  background-color: #fff8f8;
+}
+
 footer {
-  background-color: #333;
+  background-color: #222;
   color: var(--white);
   text-align: center;
-  padding: 30px 20px;
+  padding: 50px 20px 30px;
   width: 100%;
   box-sizing: border-box;
+  margin-top: 50px;
+  border-top: 5px solid var(--primary-color);
+}
+
+footer p {
+  opacity: 0.7;
+  font-size: 0.9em;
 }
 
 /* Floating Buttons */
@@ -258,7 +363,7 @@ footer {
   justify-content: center;
   font-size: 28px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 2000;
   transition: transform 0.3s;
 }
 

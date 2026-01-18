@@ -123,3 +123,57 @@ if (saveContactButton) {
         });
     });
 }
+
+// Contact Form Validation & Simulation
+const contactForm = document.getElementById('contactForm');
+const formFeedback = document.getElementById('formFeedback');
+
+if (contactForm && formFeedback) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Basic Validation
+        const name = document.getElementById('nameInput').value.trim();
+        const email = document.getElementById('emailInput').value.trim();
+        const message = document.getElementById('messageInput').value.trim();
+
+        if (!name || !email || !message) {
+            showFeedback('Por favor completa todos los campos.', 'error');
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            showFeedback('Por favor ingresa un email válido.', 'error');
+            return;
+        }
+
+        // Simulate Sending...
+        const btn = contactForm.querySelector('button');
+        const originalText = btn.innerText;
+        btn.innerText = 'Enviando...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            showFeedback(`¡Gracias ${name}! Hemos recibido tu mensaje.`, 'success');
+            contactForm.reset();
+            btn.innerText = originalText;
+            btn.disabled = false;
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formFeedback.style.display = 'none';
+                formFeedback.className = 'form-feedback';
+            }, 5000);
+        }, 1500);
+    });
+}
+
+function showFeedback(message, type) {
+    formFeedback.textContent = message;
+    formFeedback.className = `form-feedback ${type}`;
+}
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
