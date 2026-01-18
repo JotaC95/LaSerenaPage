@@ -678,56 +678,130 @@ footer p {
 }
 
 /* Responsive */
+/* Responsive / Mobile-First Optimization (Phase 9) */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+    top: 25px;
+    /* Adjust for sticky header */
+    right: 25px;
   }
 
+  /* Full Screen Glassmorphism Menu */
   nav {
     position: fixed;
     top: 0;
-    right: -100%;
-    /* Hidden off-screen */
-    width: 70%;
+    left: 0;
+    /* Align left */
+    width: 100%;
+    /* Full Width */
     height: 100vh;
-    background-color: var(--primary-color);
+    background-color: rgba(192, 89, 92, 0.95);
+    /* High opacity brand color */
+    backdrop-filter: blur(20px);
+    /* Heavy blur */
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: right 0.3s ease;
+    transition: opacity 0.4s ease, visibility 0.4s;
     z-index: 1001;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
     margin: 0;
-    padding-top: 60px;
-    /* Space for close button if needed, or proper spacing */
+    padding: 0;
+    clip-path: circle(0px at 100% 0%);
+    /* Circular reveal effect */
+    transition: clip-path 0.5s ease-in-out;
+    right: auto;
+    /* Reset right property */
   }
 
   nav.active {
-    right: 0;
+    opacity: 1;
+    visibility: visible;
+    clip-path: circle(150% at 100% 0%);
   }
 
   nav ul {
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
+    /* Big spacing */
     width: 100%;
     text-align: center;
   }
 
+  nav ul li a {
+    font-size: 2em;
+    /* Massive links */
+    font-family: var(--font-display);
+    font-weight: 300;
+  }
+
+  /* Typography Scaling */
   header h1 {
-    font-size: 40px;
+    font-size: 36px;
   }
 
   header img {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 
   .hero h2 {
-    font-size: 2.2em;
+    font-size: 2.5em;
+    /* Reduced from Desktop */
+    line-height: 1.2;
   }
 
-  .product-item {
+  .hero p {
+    font-size: 1.2em;
+  }
+
+  h2 {
+    font-size: 2em;
+    /* Standard h2 reduction */
+  }
+
+  /* Layout Spacing */
+  section {
+    padding: 50px 20px !important;
+    /* Force reduced padding */
+  }
+
+  /* Stacked Cards Optimization */
+  .social-grid {
+    gap: 20px;
+  }
+
+  .social-card {
+    height: 250px;
+    /* Slightly shorter on mobile */
+  }
+
+  .golden-ticket {
+    padding: 25px;
+    /* Compact padding */
+  }
+
+  .golden-ticket h3 {
+    font-size: 1.8em;
+  }
+
+  /* Touch Targets */
+  .app-btn {
     width: 100%;
+    /* Full width buttons */
+    justify-content: center;
+    padding: 18px;
+    /* Easier to tap */
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 28px;
   }
 }
 
@@ -835,6 +909,95 @@ footer p {
   margin: 0 0 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  z-index: 10001;
+  /* Above everything */
+  transition: width 0.1s;
+}
+
+/* Typewriter Animation */
+.typewriter-text {
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em;
+  /* Adjust as needed */
+  animation:
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+  display: inline-block;
+  max-width: 100%;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+
+  to {
+    width: 100%
+  }
+}
+
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent
+  }
+
+  50% {
+    border-color: var(--secondary-color);
+  }
+}
+
+/* Shimmer Button Effect */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-20deg);
+  animation: btn-shimmer 3s infinite;
+}
+
+@keyframes btn-shimmer {
+  0% {
+    left: -150%;
+  }
+
+  30% {
+    left: 150%;
+  }
+
+  100% {
+    left: 150%;
+  }
 }
 
 .golden-ticket p {

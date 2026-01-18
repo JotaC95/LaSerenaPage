@@ -70,6 +70,17 @@ document.querySelectorAll('a, button, .social-card').forEach(el => {
     el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
 });
 
+// Scroll Progress Bar
+const scrollProgress = document.getElementById('scrollProgress');
+if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (scrollTop / scrollHeight) * 100;
+        scrollProgress.style.width = scrolled + '%';
+    });
+}
+
 // Scroll Animations (Intersection Observer)
 const observerOptions = {
     threshold: 0.1,
