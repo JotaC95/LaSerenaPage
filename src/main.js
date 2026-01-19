@@ -1,28 +1,218 @@
-// Obtener elementos del DOM
-const floatingButton = document.getElementById('floatingButton');
-const contactModal = document.getElementById('contactModal');
-const closeModal = document.getElementById('closeModal');
-const saveContactButton = document.getElementById('saveContact');
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
+// Main Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Theme Toggle (Dark Chocolate Mode)
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
 
-// Custom Glaze Cursor & Sugar Trail
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fa-solid fa-cookie-bite"></i>';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+        });
+    }
+
+    // 2. Email Toggle Logic
+    const emailToggleBtn = document.getElementById('emailToggleBtn');
+    const contactForm = document.getElementById('contactForm');
+
+    if (emailToggleBtn && contactForm) {
+        emailToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent jump
+            contactForm.classList.toggle('hidden');
+            if (contactForm.classList.contains('hidden')) {
+                emailToggleBtn.textContent = 'Mostrar formulario de email';
+            } else {
+                emailToggleBtn.textContent = 'Ocultar formulario';
+            }
+        });
+    }
+
+    // 3. Floating Action & Modals
+    const floatingButton = document.getElementById('floatingButton');
+    const contactModal = document.getElementById('contactModal');
+    const closeModal = document.getElementById('closeModal');
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (floatingButton && contactModal) {
+        floatingButton.addEventListener('click', () => {
+            contactModal.style.display = 'flex';
+        });
+    }
+
+    if (closeModal && contactModal) {
+        closeModal.addEventListener('click', () => {
+            contactModal.style.display = 'none';
+        });
+    }
+
+    window.addEventListener('click', (e) => {
+        if (e.target === contactModal) {
+            contactModal.style.display = 'none';
+        }
+    });
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Scroll Progress Bar
+    window.onscroll = function () {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        let progressBar = document.getElementById("scrollProgress");
+        if (progressBar) {
+            progressBar.style.width = scrolled + "%";
+        }
+    };
+
+    // Interactive Sprinkles on Click
+    document.addEventListener('click', (e) => {
+        // Skip if clicking interactive elements to avoid confusion, or let it happen for fun? Let's do it everywhere.
+        createSprinkles(e.clientX, e.clientY);
+    });
+
+    function createSprinkles(x, y) {
+        const colors = ['#c0595c', '#d4af37', '#ffffff', '#5d4037']; // Brand colors
+        const count = 12;
+
+        for (let i = 0; i < count; i++) {
+            const sprinkle = document.createElement('div');
+            sprinkle.classList.add('sprinkle');
+            document.body.appendChild(sprinkle);
+
+            // Random properties
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const tx = (Math.random() - 0.5) * 100; // spread x
+            const ty = (Math.random() - 0.5) * 100 + 50; // fall down a bit
+            const rot = Math.random() * 360;
+
+            sprinkle.style.backgroundColor = color;
+            sprinkle.style.left = `${x}px`;
+            sprinkle.style.top = `${y}px`;
+            sprinkle.style.setProperty('--tx', `${tx}px`);
+            sprinkle.style.setProperty('--ty', `${ty}px`);
+            sprinkle.style.setProperty('--rot', `${rot}deg`);
+
+            // Cleanup
+            setTimeout(() => {
+                sprinkle.remove();
+            }, 1000);
+        }
+    }
+
+    // Smart Greeting
+    const heroTitle = document.getElementById('heroTitle');
+    if (heroTitle) {
+        const hour = new Date().getHours();
+        let greeting = "¡Bienvenidos a La Serena!";
+
+        if (hour >= 5 && hour < 12) {
+            greeting = "Tu dosis diaria de magia.";
+        } else if (hour >= 12 && hour < 19) {
+            greeting = "El postre que te mereces.";
+        } else {
+            greeting = "Un final dulce para hoy.";
+        }
+
+        // Only override if not already typed (or reset it)
+        heroTitle.textContent = greeting;
+        // Re-trigger typewriter by removing/adding class might be needed if it was CSS only, but let's just set text.
+    }
+
+    // Dynamic Ingredients (Drift & Fade)
+    const ingredients = ['🍓', '🍃', '🍫', '✨', '🍒', '🍋', '🍪', '🍨', '🧁', '🥐']; // More variety
+    const container = document.getElementById('ingredients-container');
+    const particleCount = 15; // More particles
+
+    if (container) {
+        for (let i = 0; i < particleCount; i++) {
+            const el = document.createElement('div');
+            el.classList.add('parallax-element');
+
+            // Random Content
+            const randomEmoji = ingredients[Math.floor(Math.random() * ingredients.length)];
+            const span = document.createElement('span');
+            span.textContent = randomEmoji;
+            el.appendChild(span);
+
+            // Random Size (Smaller & Varied)
+            const size = 0.8 + Math.random() * 1.5; // Between 0.8rem and 2.3rem
+            el.style.fontSize = `${size}rem`;
+
+            container.appendChild(el);
+
+            // Start Cycle with random delay
+            setTimeout(() => {
+                floatCycle(el);
+            }, i * 1500);
+        }
+    }
+
+    function floatCycle(el) {
+        // 1. Pick random start position
+        const startX = Math.random() * window.innerWidth;
+        const startY = Math.random() * window.innerHeight;
+
+        // 2. Teleport (Hidden)
+        el.style.transition = 'none';
+        el.style.left = `${startX}px`;
+        el.style.top = `${startY}px`;
+        el.style.opacity = '0';
+
+        void el.offsetWidth; // Force Reflow
+
+        // 3. Pick random end position
+        const endX = Math.random() * window.innerWidth;
+        const endY = Math.random() * window.innerHeight;
+
+        // 4. Move & Fade In
+        requestAnimationFrame(() => {
+            el.style.transition = 'top 20s linear, left 20s linear, opacity 3s ease-in-out';
+            el.style.left = `${endX}px`;
+            el.style.top = `${endY}px`;
+            el.style.opacity = '0.6';
+        });
+
+        // 5. Fade out before end
+        setTimeout(() => {
+            el.style.opacity = '0';
+        }, 17000); // Fade out at 17s
+
+        // 6. Loop
+        setTimeout(() => {
+            floatCycle(el);
+        }, 20000); // Restart at 20s
+    }
+});
+
+// Custom Cursor Logic (Outside scope if needed, or inside)
 const cursor = document.querySelector('.cursor-dot');
 let mouseX = 0;
 let mouseY = 0;
 let cursorX = 0;
 let cursorY = 0;
 
-// Cursor Movement (Smooth Follow)
+// Cursor Movement
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    // Create Sugar Particle
-    if (Math.random() > 0.8) { // Only sometimes to avoid lag
+    // Sugar Particles
+    if (Math.random() > 0.9) {
         createSugarParticle(e.clientX, e.clientY);
     }
 });
+
 
 function animateCursor() {
     // Lerp for smooth cursor
