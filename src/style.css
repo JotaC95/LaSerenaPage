@@ -650,9 +650,110 @@ nav ul li a:hover {
   background: white;
 }
 
-.social-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+/* Sommelier Section */
+.sommelier-section {
+  padding: 60px 20px;
+  background-color: var(--bg-color);
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.sommelier-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sommelier-container h3 {
+  font-family: var(--font-display);
+  font-size: 2em;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.mood-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.mood-btn {
+  background: white;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-family: var(--font-main);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.mood-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+[data-theme="dark"] .mood-btn {
+  background: transparent;
+  color: var(--primary-color);
+}
+
+[data-theme="dark"] .mood-btn:hover {
+  background: var(--primary-color);
+  color: #2b1d1a;
+}
+
+.recommendation-card {
+  margin-top: 20px;
+  animation: fadeUp 0.5s ease;
+}
+
+.recommendation-card h4 {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+/* 3D Tilt Effect Base */
+.social-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.social-card .card-content {
+  /* Ensure content stays flat or pops slightly */
+  transform: translateZ(20px);
+}
+
+/* Highlight Pulse (Chef's Secret) */
+@keyframes highlightPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 20px rgba(212, 175, 55, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+.highlight-active {
+  animation: highlightPulse 1.5s infinite;
+  border: 2px solid #d4af37;
+}
+
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .card-content {
