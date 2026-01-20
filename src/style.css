@@ -498,6 +498,11 @@ nav ul li a:hover {
   text-align: center;
 }
 
+.hero-logo-mobile {
+  display: none;
+  /* Hidden on Desktop */
+}
+
 /* Desktop Row Layout */
 @media (min-width: 768px) {
   .hero-content {
@@ -1147,6 +1152,15 @@ footer p {
   header img {
     width: 60px;
     height: 60px;
+  }
+
+  .hero-logo-mobile {
+    display: block;
+    width: 140px;
+    /* Reduced size for perfect fit */
+    height: auto;
+    margin-bottom: 15px;
+    animation: fadeUp 1s ease;
   }
 
   .hero h2 {
